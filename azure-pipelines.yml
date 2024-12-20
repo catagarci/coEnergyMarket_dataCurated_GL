@@ -4,7 +4,7 @@ trigger:
 - develop
 
 pool:
-  vmImage: 'windows-latest'
+  name: 'Energy Build'
 
 steps:
 - task: AWSCLI@1
