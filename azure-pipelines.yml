@@ -6,11 +6,40 @@ trigger:
 pool:
   name: 'Energy Build'
 
-steps:
-- task: AWSCLI@1
+variables:
+  AWS_REGION: 'us-east-1'  # Ajusta la región de AWS
+  SCRIPT_PATH: 'tables_energy/co_energy_market_curado_providers.py'  # Ruta del script
+  S3_BUCKET_NAME: 'co-energy-marketer-artifacts-569587453819-pdn'  # Nombre de bucket S3
+
+stages:
+- stage: Deploy
   displayName: 'Upload Glue Script to S3'
-  inputs:
-    awsCredentials: 'new_service_connection'
-    regionName: 'us-east-1'
-    awsCommand: 's3 cp'
-    arguments: '$(Build.ArtifactStagingDirectory)/co_energy_market_curado_providers.py s3://co-energy-marketer-artifacts-569587453819-pdn/scripts/co_energy_market_curado_providers.py'
+  jobs:
+  - job: UploadScript
+    displayName: 'Upload Glue Script'
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.10'
+        addToPath: true
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install awscli  # Instalamos el AWS CLI
+      displayName: 'Install AWS CLI'
+
+    - task: AmazonWebServicesCLI@1
+      inputs:
+        awsCredentials: 'new_service_connection'
+        regionName: $(AWS_REGION)  # Configuramos la región
+
+    - task: UploadFiles@1
+      inputs:
+        SourceFolder: $(Build.SourcesDirectory)/$(SCRIPT_PATH)
+        TargetFolder: s3://$(S3_BUCKET_NAME)/scripts/
+        Overwrite: true
+      displayName: 'Upload Glue Script to S3'
+
+    - script: |
+        echo "Glue script uploaded successfully to S3."
+      displayName: 'Confirmation'
