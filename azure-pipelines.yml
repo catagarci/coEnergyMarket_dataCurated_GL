@@ -12,5 +12,5 @@ steps:
   inputs:
     awsCredentials: 'new_service_connection'
     regionName: 'us-east-1'
-    command: 's3 cp'
+    awsCommand: 's3 cp'
     arguments: '$(Build.ArtifactStagingDirectory)/co_energy_market_curado_providers.py s3://co-energy-marketer-artifacts-569587453819-pdn/scripts/co_energy_market_curado_providers.py'
