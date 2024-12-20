@@ -1,7 +1,7 @@
 """Constants"""
 
-DOMAIN: str ="market"
-SUBDOMAIN: str ="data"
+DOMAIN: str ="marketer"
+SUBDOMAIN: str ="Providers"
 CAPACITY: str ="energy"
 PAIS: str ="co"
 CATALOG_TABLE_NAME_PROVIDERS: str ="Providers"
