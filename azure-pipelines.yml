@@ -1,0 +1,30 @@
+name: $(Build.SourceBranchName).$(date:yyyyMMdd)$(rev:.r)
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+      - release
+  paths:
+    exclude:
+      - .azure-pipelines
+      - README.md
+      - azure-pipelines.yml
+pr:
+  branches:
+    exclude:
+      - "*"
+pool:
+  name: 'Energy Build'
+resources:
+  repositories:
+    - repository: devops_pipeline_ref
+      type: github
+      endpoint: 'catagarci'
+      name: catagarci/devops_pipeline_ref
+      ref: refs/heads/trunk
+extends:
+  template: /master-extends.yaml@devops_pipeline_ref
+  parameters:
+    infra: 'glue'
+    technology: 'glue'
