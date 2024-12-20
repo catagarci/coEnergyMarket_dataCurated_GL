@@ -15,7 +15,7 @@ pr:
     exclude:
       - "*"
 pool:
-  name: 'Nequi Build'
+  name: 'Energy Build'
 resources:
   repositories:
     - repository: devops_pipeline_ref
