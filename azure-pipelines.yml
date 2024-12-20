@@ -22,7 +22,7 @@ resources:
       type: github
       endpoint: 'catagarci'
       name: catagarci/devops_pipeline_ref
-      ref: refs/heads/trunk
+      ref: refs/heads/main
 extends:
   template: /master-extends.yaml@devops_pipeline_ref
   parameters:
