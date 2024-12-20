@@ -15,14 +15,14 @@ pr:
     exclude:
       - "*"
 pool:
-  name: 'Energy Build'
+  name: 'Nequi Build'
 resources:
   repositories:
     - repository: devops_pipeline_ref
       type: github
       endpoint: 'catagarci'
       name: catagarci/devops_pipeline_ref
-      ref: refs/heads/trunk
+      ref: refs/heads/main
 extends:
   template: /master-extends.yaml@devops_pipeline_ref
   parameters:
