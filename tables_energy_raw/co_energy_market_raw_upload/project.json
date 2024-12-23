@@ -1,0 +1,8 @@
+{
+  "name": "co_energy_market_raw_upload",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "tables_energy/co_energy_market_raw_upload",
+  "targets": {},
+  "tags": []
+}

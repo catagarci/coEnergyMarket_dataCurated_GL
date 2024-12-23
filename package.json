@@ -1,0 +1,16 @@
+{
+  "name": "glue_mono_dummy",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "devDependencies": {
+    "@nrwl/devkit": "~15.9.4",
+    "@nxlv/python": "~15.10.0",
+    "nx": "~16.3.2",
+    "nx-cloud": "latest"
+  },
+  "workspaces": [
+    "src/*"
+  ]
+}
